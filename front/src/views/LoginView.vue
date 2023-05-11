@@ -1,33 +1,52 @@
 <template>
+
   <div class="login-container">
-    <form class="login-form">
+    <form class="login-form" @submit.prevent="getlogin">
       <h2>Login</h2>
       <div class="form-group">
         <label for="username">Usuário/E-mail:</label>
-        <input type="text" id="username" name="username">
+        <input type="text" id="username" v-model="username" />
       </div>
       <div class="form-group">
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password">
+        <input type="password" id="password" v-model="password" />
       </div>
-      <button type="submit">Login</button>
+      <button type="submit" click="login">Login</button>
     </form>
-    <img src="@/assets/login-img.jpg" alt="Login Image">
+    <img src="@/assets/logo-img.png" alt="Login Image">
   </div>
 </template>
 
 <script>
+import router from '@/router';
+
 export default {
   name: 'HomeView',
+  data(){
+    return{
+      username: "",
+      password: ""
+    }
+  },
+  methods:{
+    getlogin(){
+      if(this.username == 20191214010009){
+        router.push('/dashboardProfessor')
+      }
+      else{
+        router.push('/')
+      }
+    }
+  }
 }
 </script>
 <style>
   .login-container {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
+    margin-top: 80px;
   }
-
   .login-form {
     width: 400px;
     padding: 20px;
@@ -70,7 +89,12 @@ export default {
   img {
     max-width: 50%;
     height: auto;
-    margin-left: 20px;
+    margin-right: 20px;
   }
 
+  @media screen and (max-width: 600px) {
+    img {
+      display: none;
+    }
+  }
 </style>
