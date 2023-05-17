@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h2>Olá Mundo</h2>
     <div class="list">
       <div :class="{ 'sidebar': true, 'minimized': isMinimized }">
         <div class="menu">
@@ -12,7 +11,7 @@
           </div>
 
           <div class="item" @click="toggleSidebar">
-            <router-link to="/dashboardProfessor">
+            <router-link to="/turmas">
               <img class="icon" src="@/assets/redações.svg"/><p>Turmas</p>
             </router-link>
           </div> 
@@ -76,7 +75,7 @@ export default {
     margin-left: 15px;
   }
   .menu .item a{
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
     color: #ffffff;
     font-size:16px;
     text-decoration: none;
