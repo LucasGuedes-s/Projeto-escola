@@ -19,6 +19,7 @@
 
 <script>
 import router from '@/router';
+import axios from 'axios';
 
 export default {
   name: 'HomeView',
@@ -30,12 +31,23 @@ export default {
   },
   methods:{
     getlogin(){
-      if(this.username == 20191214010009){
-        router.push('/dashboardProfessor')
-      }
-      else{
-        router.push('/')
-      }
+      axios.get('http://localhost:3000/LoginProfessor', {   
+          user:{
+              login: this.email,
+              senha: this.password,
+          }
+      }).then(response => {
+            console.log(response.data)
+            //console.log(response.headers);
+            console.log(response.headers.authorization);
+
+            this.store.token = response.headers.authorization // atualiza o token no estado do store
+            //Cookie.remove('token')
+
+            router.push('/cardapio')
+        }).catch(error => {
+            console.error(error);
+        });
     }
   }
 }

@@ -8,8 +8,10 @@ app.use(express.urlencoded({ extended: false }));
 
 app.set('trust proxy', 1);
 
-const routers = require('./routers/routerUser');
-app.use(routers);
+//const routers = require('./routers/routerUser');
+const router = require('./routers/routerAdmin');
+
+app.use(router);
 
 const hostname = 'localhost';
 const port = 3000;
