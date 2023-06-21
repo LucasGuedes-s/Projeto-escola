@@ -11,7 +11,8 @@
         <label for="password">Password:</label>
         <input type="password" id="password" v-model="password" />
       </div>
-      <button type="submit" click="login">Login</button>
+      <button type="submit" click="getlogin">Login</button>
+      <p class="mb-5 pb-lg-2">Não tem acesso? <a href="/cadastro" >Registre-se</a></p>
     </form>
     <img src="@/assets/logo-img.png" alt="Login Image">
   </div>
@@ -30,21 +31,33 @@ export default {
     }
   },
   methods:{
-    getlogin(){
-      axios.get('http://localhost:3000/LoginProfessor', {   
+    async Cadastro(){
+      axios.post('http://localhost:3333/CadastrarProfessor',
+      {
+        usuario: 20191214010009,
+        senha: 'lucas123'
+      },{   
+      }).then(response => {
+            console.log(response.data)
+        }).catch(error => {
+            console.error(error);
+        });
+    },
+    async getlogin(){
+      axios.post('http://localhost:3333/LoginProfessor', {   
           user:{
-              login: this.email,
+              login: this.username,
               senha: this.password,
           }
       }).then(response => {
-            console.log(response.data)
+            console.log(response)
             //console.log(response.headers);
             console.log(response.headers.authorization);
 
             this.store.token = response.headers.authorization // atualiza o token no estado do store
             //Cookie.remove('token')
 
-            router.push('/cardapio')
+            router.push('/dashboard')
         }).catch(error => {
             console.error(error);
         });
@@ -96,6 +109,9 @@ export default {
     background-color: #5d3476;
     color: #fff;
     cursor: pointer;
+  }
+  :hover button{
+    background-color: #38005a;
   }
 
   img {

@@ -3,7 +3,8 @@ const router = express.Router();
 
 const controller = require('../controller/AdmController');
 
-router.get('/LoginProfessor', controller.CadastrarUsuario)
+router.post('/LoginProfessor', controller.LoginProfessor)
+//router.post('/CadastrarProfessor', controller.CadastrarProfessor)
 // Definir rotas e lógica de manipulação aqui
 
 module.exports = router;

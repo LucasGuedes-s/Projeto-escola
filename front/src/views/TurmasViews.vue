@@ -8,14 +8,11 @@
 </template>
 <script>
 import SidebarNav from '@/components/Sidebar.vue';
-
 export default {
   name: 'HomeView',
   components:{
     SidebarNav
   }
-
 }
-
 </script>
 
